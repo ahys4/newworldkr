@@ -2,7 +2,15 @@
 <html>
     <head>
         <title>뉴월드 빌드 시뮬레이터</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta id="vp" name="viewport" content="width=device-width, initial-scale=1.0">
+        <script>
+            window.onload = function() {
+                if (screen.width < 450) {
+                    var mvp = document.getElementById('vp');
+                    mvp.setAttribute('content','user-scalable=no,width=450');
+                }
+            }
+        </script>
         <meta charset="utf-8">
         <link rel = "shorcut icon" href='./NWicon.ico'>
         <link rel='stylesheet' type='text/css' href='./css/style.css'>
