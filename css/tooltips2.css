@@ -92,3 +92,57 @@
 .tooltip-u:hover .tooltiptext {
     visibility: visible;
 }     
+.tooltip-a .tooltiptext1{
+    visibility: hidden;
+    width: 220px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    left: 100px;
+    top: -90px;
+    z-index: 99;
+}
+.tooltip .tooltiptext1{
+    visibility: hidden;
+    width: 220px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    left: 100px;
+    top: -50px;
+    z-index: 99;
+}
+.tooltip-u .tooltiptext1{
+    visibility: hidden;
+    width: 220px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px;
+
+    /* Position the tooltip */
+    position: absolute;
+    left: 100px;
+    top: -90px;
+    z-index: 99;
+}
+.tooltip-a:hover .tooltiptext1 {
+    visibility: visible;
+}
+.tooltip:hover .tooltiptext1{
+    visibility: visible;
+}
+.tooltip-u:hover .tooltiptext1{
+    visibility: visible;
+} 

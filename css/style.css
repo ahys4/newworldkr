@@ -56,7 +56,7 @@
 #button {
     background-color: rgba(58, 63, 68, 0.77);
     color: rgb(230, 227, 227);
-    margin: auto;
+    margin: 5px;
 }
 #button2 {
     visibility: hidden;
