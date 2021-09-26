@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        
+        <meta charset="utf-8">
+        <link rel = "shorcut icon" href='./NWicon.ico'>
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-spear.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+            <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+                
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                <div class="hiddenstorage">
+                    <p id="Row11">0</p>
+                    <p id="Row12">0</p>
+                    <p id="Row13">0</p>
+                    <p id="Row14">0</p>
+                    <p id="Row15">0</p>
+                    <p id="Row16">0</p>
+                    <p id="Row21">0</p>
+                    <p id="Row22">0</p>
+                    <p id="Row23">0</p>
+                    <p id="Row24">0</p>
+                    <p id="Row25">0</p>
+                    <p id="Row26">0</p>
+                </div>
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>ZONER - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonushvydmgconsec.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Deadly Consistency
+                                </h3>
+                                <p>강공격으로 같은 타겟을 연속해서 적중하면 피해 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s1" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/spear_javelin.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                Javelin
+                                </h3>
+                                <p>창을 던져 무기공격력의 125% 피해를 입히고 움추려들게 한다<br><br>쿨다운 15초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonushvydmgatrng.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Deadly Reach
+                                </h3>
+                                <p>3m 이상 떨어진 적에게 치명타 확률 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <!--2nd line-->
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordability1_mod1.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Refreshing Reach
+                                </h3>
+                                <p>강공격이 모든 기술 쿨다운을 15% 감소시킨다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_javelin_reaction_upgrade.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Forceful Impact
+                                </h3>
+                                <p>적중 시 넉다운 시킨다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/bowpassive12.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Evasive Maneuvers
+                                </h3>
+                                <p>공격 적중 후 2초간 후방으로 하는 회피가 스태미나를 20% 적게 소모한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s3" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/spear_sweep.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Sweep
+                                </h3>
+                                <p>적들의 다리를 휩쓸ㅇ러 무기공격력의 75% 피해를 가하고 넉다운 시킨다<br><br>쿨다운 10초</p>
+                            </span>
+                        </div>
+                        
+                        <!--3rd line-->
+                        
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s2" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/spear_cyclone.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Cyclone
+                                </h3>
+                                <p>회전 공격을 하여 무기공격력의 110% 피해를 입힌다. 적중 시 적을 3m 밀쳐내며 이동속도를 3초간 50% 감소시킨다<br><br>쿨다운 12초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusstaminaonkill.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Invigorating Crits
+                                </h3>
+                                <p>치명타 적중 시 스태미나 20 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvsknockeddown.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Merciless Strength
+                                </h3>
+                                <p>넉다운 된 적에게 피해 25% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_sweep_grit.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Tenacious Sweep
+                                </h3>
+                                <p>이 기술에 제어방해 면역 효과 부여</p>
+                            </span>
+                        </div>
+
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_cyclone_bonusstaminaonmultihit.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Invigorating Combo
+                                </h3>
+                                <p>적중할 때마다 스태미나 25 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_javelin_cdronheadshot.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Refreshing Precision
+                                </h3>
+                                <p>헤드샷이 쿨다운을 50% 감소시킨다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordpassive14.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Defensive Stance
+                                </h3>
+                                <p>강공격 적중 시 2초간 피해감소 15%</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_sweep_followupattack.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Coup De Grace
+                                </h3>
+                                <p>이 기술 시전 중 일반 공격을 하면 창을 내려꽂으며 무기공격력의 125% 피해를 가한다</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_cyclone_grit.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Strong Momentum
+                                </h3>
+                                <p>이 기술 시전 중 제어방해 면역 효과를 얻는다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass5_dodgein.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Strong Conditioning
+                                </h3>
+                                <p>스태미나가 50% 미만이면 스태미나 재생 30% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_javelin_bonusdmg_longrng.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Deadly Distance
+                                </h3>
+                                <p>날아간 거리에 비례해 피해증가 (1m당 2.5% 피해증가). 최대 100%</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgmaxstamina.webp" onclick="
+                            SelDesel6(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Reserved Strength
+                                </h3>
+                                <p>스태미나가 최대일때 피해량 25% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p>  
+                    <p id="hr13"></p> 
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>IMPALER - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_fortifyvsgrit.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Precise Jabs
+                                </h3>
+                                <p>약공격의 치명타 확률 5% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/spear_skewer.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Skewer
+                                    </h3>
+                                    <p>전방으로 돌진하여 적을 꿰뚫으며 무기공격력의 125% 피해를 가한다. 출혈효과 부여 (10초간 매초 10% 피해)<br><br>쿨다운 15초
+                                    </p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_cdronlight.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Refreshing Jabs
+                                </h3>
+                                <p>약공격 콤보의 두번째 공격 적중 시 모든 스킬 쿨다운 10% 감소</p>
+                            </span>
+                        </div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/spear_perforate.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Perforate
+                                </h3>
+                                <p>세번을 찔러 각각 무기공격력의 70% 피해를 가하고 10초간 타겟의 피해흡수량을 5%씩 깎는다<br><br>쿨다운 12초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordability5_mod1.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Crippling Jabs
+                                </h3>
+                                <p>체력 30% 미만의 적에게 약공격 콤보의 마지막 공격 적중 시 3초간 이동속도 30% 감소 효과</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_skewer_bonusdmgvsmaxhp.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Deadly Ambush
+                                </h3>
+                                <p>최대 체력의 적에게 가하는 피해량 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvslowhp.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Finishing Blows
+                                </h3>
+                                <p>체력 30% 미만의 적에게 가하는 피해량 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+
+                        <!--3rd line-->
+                        
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvsgrit.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Unerring Precision
+                                </h3>
+                                <p>제어방해 면역인 적에게 피해량 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_skewer_empoweronkill.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Follow Through
+                                </h3>
+                                <p>치명타 적중 시 10초간 피해 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw2-3" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/spear_vaultkick.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Vault Kick
+                                </h3>
+                                <p>창을 이용해 전방으로 발차기를 해서 무기공격력의 75% 피해를 가하고 1.5초 기절시킨다<br><br>도발 보석 호환. 적중 시 2초 도발<br>쿨다운 15초</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_perforate_bonusrend.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Rupturing Strikes
+                                </h3>
+                                <p>체력 50% 이상의 적에게 피해흡수량 감소효과가 각각 10%로 증가한다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_skewer_bonusbleeddmg.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Deep Wound
+                                </h3>
+                                <p>출혈 시간이 15초로 증가한다</p>
+                            </span>
+                        </div>
+                        
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass1_lightbleeds.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Aggressive Maneuvers
+                                </h3>
+                                <p>회피 후 2초안에 시전한 기술 적중 시 모든 기술 쿨다운 20% 감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordability1_mod2.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Relentless Blows
+                                </h3>
+                                <p>체력 50% 미만의 적 적중 시 5초간 피해 20% 증가</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_perforate_bonusblockpushback.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Impactful Strikes
+                                </h3>
+                                <p>세번 모두 적중시 타겟을 움추려들게 한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_cdronbleedkill.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Exacerbating Crits
+                                </h3>
+                                <p>치명타 적중 시 디버프와 출혈효과 지속시간 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass4_bleeddamage.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Exposed Wounds
+                                </h3>
+                                <p>출혈하고 있는 적에게 치명타 확률 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordability1_mod1.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Continuous Motion
+                                </h3>
+                                <p>적중 시 다른 창 기술의 쿨다운이 30% 감소한다</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvsdebuff.webp" onclick="
+                            SelDesel12(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Exploited Weakness
+                                </h3>
+                                <p>타겟에 걸린 디버프 당 피해 10% 증가 (최대 30%)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p>  
+                        <p id="hr15"></p>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>

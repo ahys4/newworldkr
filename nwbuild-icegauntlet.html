@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        
+        <meta charset="utf-8">
+        <link rel = "shorcut icon" href='./NWicon.ico'>
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-icegauntlet.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+            <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+                
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                <div class="hiddenstorage">
+                    <p id="Row11">0</p>
+                    <p id="Row12">0</p>
+                    <p id="Row13">0</p>
+                    <p id="Row14">0</p>
+                    <p id="Row15">0</p>
+                    <p id="Row16">0</p>
+                    <p id="Row21">0</p>
+                    <p id="Row22">0</p>
+                    <p id="Row23">0</p>
+                    <p id="Row24">0</p>
+                    <p id="Row25">0</p>
+                    <p id="Row26">0</p>
+                </div>
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>ICE TEMPEST - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive1.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Cold Reach
+                                </h3>
+                                <p>15m 이상 떨어진 적에게 약공격과 강공격 피해량 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s1" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability1.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                Ice Spikes
+                                </h3>
+                                <p>땅에서 솟구치는 얼음 가시를 8m 전진시켜 55% 무기데미지를 입힌다. 8m 후 거대한 얼음가시가 솟구치며 175% 무기데미지를 입히고 적들을 밀쳐낸다. 죄클릭으로 원하는 위치에서 일찍 솟구치게 할 수 있다<br><br>마나 15 소모<br>쿨다운 15초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive2.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Critical Rejuvenation
+                                </h3>
+                                <p>치명타 적중 시 마나 15 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+
+                        <!--2nd line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive3.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Energized Critical
+                                </h3>
+                                <p>얼음 마법의 치명타 피해 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability1_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Refreshing Spikes
+                                </h3>
+                                <p>큰 가시를 적중 시키면 이 마법의 쿨다운 10% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s3" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability2.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Ice Storm
+                                </h3>
+                                <p>5m 반경의 지역에 얼음 폭풍을 소환해 0.25초당 17% 무기데미지를 입히고 이동속도를 25% 감소시킨다. 20m 사거리. 5초 지속<br><br>마나 25 소모<br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        
+                        <!--3rd line-->
+                        
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s2" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability3.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Wind Chill
+                                </h3>
+                                <p>얼음 바람을 시전해 적들을 5m 밀쳐내고 적중 시 16% 무기데미지를 입힘. 7m 사거리. 사거리 끝자락 2m에선 밀쳐내지 않고 데미지가 20%로 증가. 시전 중 움직일 수 있다<br><br>마나 20 소모<br>쿨다운 12초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability1_mod2.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Empowered Spikes
+                                </h3>
+                                <p>체력 30% 미만의 적에게 큰 가시의 피해량이 20% 증가한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive4.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Gathering Storm
+                                </h3>
+                                <p>3번의 연속된 약공격을 적중시키면 마나 15 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability2_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Weakening Gust
+                                </h3>
+                                <p>체력이 50% 미만이면 얼음 폭풍의 영향을 받은 적에게 10% 증가된 피해를 입힌다 (3초 지속)</p>
+                            </span>
+                        </div>
+
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability5_mod3.png" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Enduring Chill
+                                </h3>
+                                <p>얼음 바람의 지속시간 1초 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability1_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Deadly Path
+                                </h3>
+                                <p>작은 가시 데미지 10% 증가, 작은 가시에 적중되면 움추리게 한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive5.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Critical Frost
+                                </h3>
+                                <p>동상에 걸리거나 얼음 지역에 있는 적 대상 치명타 확률 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability2_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Storm Summoner
+                                </h3>
+                                <p>마나가 최대치일 때 얼음 폭풍의 마나 소모량이 80% 감소</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability3_mod1.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Chilling Blast
+                                </h3>
+                                <p>얼음 바람 끝자락 데미지 25% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive6.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Heavy Freeze
+                                </h3>
+                                <p>얼음 폭풍 안에 있거나 동상에 걸린 상태면 강공격이 대상을 1초간 얼어붙게 함.</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability1_mod4.webp" onclick="
+                            selec(modskill4(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Spiky Reach
+                                </h3>
+                                <p>큰 가시의 옆 면에서 얼음 조각이 발사되어 118% 무기데미지를 입힘 (6m 사거리)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability2_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Punishing Storm
+                                </h3>
+                                <p>얼음 폭풍 내 적 하나당 피해량 10% 증가</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ultimate1.webp" onclick="
+                            SelDesel6(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Ultimate Chill
+                                </h3>
+                                <p>얼음 마법 적중 시 3초간 피해량 35% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p>  
+                    <p id="hr13"></p> 
+                    <p id="hr3-1"></p> 
+                    <p id="hr6-1"></p> 
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>BUILDER - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive7.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Blocking Stamina
+                                </h3>
+                                <p>가드 시 마나를 스태미나로 변환. <br>3 마나 -> 15 스태미나</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability4.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Ice Pylon
+                                    </h3>
+                                    <p>얼음 투사체를 발사하는 얼음탑을 세운다. <br>투사체당 50% 무기데미지. <br>사거리 20m. <br>2초에 한발씩 총 8발 발사.<br>15초 동안 지속되고 공격에 부셔질 수 있음.<br>1m 반경에 얼음 지역 생성<br><br>마나 15 소모<br>쿨다운 10초
+                                    </p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive8.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Quick Frost
+                                </h3>
+                                <p>얼음 지역에서 이동속도 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability5.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Ice Shower
+                                </h3>
+                                <p>4초간 지속되는 얼음비를 소환해 1m x 5m 얼음지역을 생성한다. 지역에 들어선 적들은 동상에 걸리며 1초간 속박된다. 지역에서 나온 이후 3초간 50% 이동속도 감소.<br><br>마나 25 소모<br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability4_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Greater Pylon
+                                </h3>
+                                <p>둔화된 적에게 피해량 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive9.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Empowered Frost
+                                </h3>
+                                <p>얼음 지역안에서 마법을 사용하면 3 마나를 돌려받는다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability5_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Enduring Shower
+                                </h3>
+                                <p>얼음비의 지속시간 7초로 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive10.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Frozen Touch
+                                </h3>
+                                <p>최대 체력일 때 근접 공격에 피격되면 상대를 2초간 25% 느려지게 한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability4_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Pylon Regen
+                                </h3>
+                                <p>얼음탑이 5초간 피해를 입지 않으면 탑의 체력이 100% 회복됨</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw2-3" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability6.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Entombed
+                                </h3>
+                                <p>얼음으로 자신을 둘러싸서 무적상태가 되며 마나재생이 크게 증가한다. 10초동안 지속되며 파괴될 수 있다. 일찍 캔슬하려면 우클릭으로 깨고 나오거나 좌클릭으로 20 마나를 소모해 밀쳐낼 수 있다<br><br>마나 10 소모<br>쿨다운 30초</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability5_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Quick Shower
+                                </h3>
+                                <p>자신을 포함한 아군이 얼음비를 지나가면 2초간 이동속도 25% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability4_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Pylon Dodge
+                                </h3>
+                                <p>최대 스태미나일 때 회피하면 얼음탑의 공격속도가 3초간 증가한다</p>
+                            </span>
+                        </div>
+                        
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive11.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Refreshing Frost
+                                </h3>
+                                <p>얼음 지역 내에서 마법을 사용하면 얼음 마법 쿨다운 20% 감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability6_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Strengthened Tomb
+                                </h3>
+                                <p>얼음을 깨고 나오면 3초간 방어력 25% 증가</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability3_mod2.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Frigid Showers
+                                </h3>
+                                <p>동상이 적의 방어를 10% 감소시킨다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_passive12.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Defiant Freeze
+                                </h3>
+                                <p>얼음 마법을 시전하면 2초간 피해감소 20%를 얻는다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability4_mod4.webp" onclick="
+                            selec(modskill4(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Pylon Refresh
+                                </h3>
+                                <p>얼음 조각 적중 시 얼음탑의 지속시간이 1초 연장한다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability6_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Cleansing Tomb
+                                </h3>
+                                <p>모든 디버프를 제거한다</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" name="s4" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ultimate2.webp" onclick="
+                            selec(modskill5(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Ultimate Frost
+                                </h3>
+                                <p>얼음탑의 체력을 두배로 늘리고 얼음지역을 5m로 넓힌다. 이 지역에 서있으면 Quick Frost와 Empowered Frost 패시브 효과를 두배로 증진시킨다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p>  
+                        <p id="hr15"></p>  
+                        <p id="hr15-1"></p>
+                        <p id="hr15-2"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer class="footer">
+        <h3>
+            <span id="head2">NWKR</span>
+        </h3>
+        <p>Copyright © 2021 NWKR.com</p>
+    </footer>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>

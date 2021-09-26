@@ -1,0 +1,53 @@
+#배경 {
+    background-image: url('texture-bottom.jpg');
+    text-align: center;
+    color: rgb(230, 227, 227);
+    position:absolute;
+    top:0;
+}
+.image-container-active{
+    width: 66px;
+    height: 66px;
+    position:relative;
+    overflow: hidden; 
+    border: solid 1px white;
+    text-align: center;
+    margin: 16px;
+    cursor:pointer;
+}
+.image-container{
+    width: 44px;
+    height:44px;
+    position:relative;
+    overflow: hidden;
+    border-radius: 50%; 
+    border: solid 1px white;
+    align-self: center;
+    margin: 28px;
+    cursor:pointer;
+}
+.image-container-ulti{
+    width:70px;
+    height:70px;
+    position:relative;
+    overflow: hidden;
+    border-radius: 50%; 
+    border: solid 1px white;
+    margin: 15px;
+    cursor:pointer;
+}
+.icon {
+    width: 35px;
+    height: 35px;
+    
+    vertical-align: middle;
+}
+.icon2 {
+    width: 45px;
+    height: 45px;
+    
+    vertical-align: middle;
+}
+#head2{
+    font:25px;
+}

@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        
+        <meta charset="utf-8">
+        <link rel = "shorcut icon" href='./NWicon.ico'>
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-musket.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+            <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+                
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                <div class="hiddenstorage">
+                    <p id="Row11">0</p>
+                    <p id="Row12">0</p>
+                    <p id="Row13">0</p>
+                    <p id="Row14">0</p>
+                    <p id="Row15">0</p>
+                    <p id="Row16">0</p>
+                    <p id="Row21">0</p>
+                    <p id="Row22">0</p>
+                    <p id="Row23">0</p>
+                    <p id="Row24">0</p>
+                    <p id="Row25">0</p>
+                    <p id="Row26">0</p>
+                </div>
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>TRAPPER - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability3_mod2.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Salt On The Wounds
+                                </h3>
+                                <p>체력 30% 미만의 적에게 피해 증가 10%</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s1" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/musketability4.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Traps
+                                </h3>
+                                <p>20초 지속되는 덫은 던진다. <br>덫을 밟은 상대는 이동불가 3초
+                                    <br><br>쿨다운 20초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability3.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Back It Up
+                                </h3>
+                                <p>8미터 반경에 적이 있으면<br>이동속도와 조준이동속도 10% 증가</p>
+                            </span>
+                        </div>
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw1-2" name="s2" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/musketability2_mod2.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Stopping Power
+                                </h3>
+                                <p>화약을 과장전시켜 다음 사격이 무기공격력의 120% 피해를 입히며 움추리게하고 3미터 밀쳐냄. 다른 과장전 기술과 같이 쓸 수 없음<br><br>쿨다운 18초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_vaultkick_empoweronblockbreak.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Weakened Defense
+                                </h3>
+                                <p>탄환이 방패에 막히면 입는 스태미나 피해 50% 증가. 방패에 막히지 않으면 방어 관통 10%</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability4_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Trapped Damage
+                                </h3>
+                                <p>덫을 밟으면 3초간 20% 증가된 피해를 입음</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_vaultkick_empoweronblockbreak.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Empowering Weakness
+                                </h3>
+                                <p>디버프 걸린 상대를 적중시키면 5초간 5% 피해 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_vaultkick_alwaysdostaminadmg.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Lasting Impreassion
+                                </h3>
+                                <p>탈진 디버프 부여. 8초간 스태미나 회복을 10% 감소 시킨다.</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/bowpassive5.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Hustle
+                                </h3>
+                                <p>회피 후 3초간 이동속도 증가 10%</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s3" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/musketability6.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Sticky Bomb
+                                </h3>
+                                <p>접착 폭탄을 던져서 붙인다. 3초 후 폭발하며 3m 반경의 모든 적에게 무기공격력의 175% 피해를 입힘<br><br>쿨다운 12초</p>
+                            </span>
+                        </div>
+
+                        <!--4th line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability6mod2_minortempo.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Energy Burst
+                                </h3>
+                                <p>디버프 걸린 적 적중시 스태미나 5 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability4_mod1.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Scent of Blood
+                                </h3>
+                                <p>덫에 걸린 적을 적중할 시 피해량의 100% 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/bowpassive5.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Tactical Reload
+                                </h3>
+                                <p>회피하면 장전됨 (6초에 한번)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_vaultkick_alwaysdostaminadmg.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Unflinching Walk
+                                </h3>
+                                <p>접착폭탄이 피해를 가하면 스태미나 40 회복</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive6.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Supplementary Repulsion
+                                </h3>
+                                <p>적중시 8초간 10% 이동속도 감소 디버프</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability4_mod2.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Double Trap
+                                </h3>
+                                <p>덫을 두 개 소지할 수 있음</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_skewer_bonusdmgvsmaxhp.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Kick'em When They're Down
+                                </h3>
+                                <p>군중제어효과를 받는 적에게 10% 피해 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive6.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Sticky Slow
+                                </h3>
+                                <p>접착폭탄에 피해를 입으면 3초간 이동속도 15% 감소 디버프</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive7.webp" onclick="
+                            SelDesel6(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Lethal Combo
+                                </h3>
+                                <p>TRAPPER 스킬트리로 디버프를 걸면<br>걸린 적에게<br>머스킷 피해 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p>  
+                    <p id="hr13"></p> 
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>SHARPSHOOTER - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability1_mod1.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Critical Reload
+                                </h3>
+                                <p>5초 간격으로 헤드샷을 3번 맞추면 즉시 재장전한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/musketability1.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Power Shot
+                                </h3>
+                                <p>화약을 과장전해 다음 사격이 무기공격력의 150% 피해를 입힘. 다른 과장전 스킬과 같이 쓸 수 없다<br><br>쿨다운 15초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive11.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Called Shot
+                                </h3>
+                                <p>3초 이상 조준 시 5% 피해 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/musketability1_mod3.png" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Powder Burn
+                                </h3>
+                                <p>화약을 과장전해 다음 사격이 무기공격력의 110% 피해를 입힌다. 적중 시 9초간 매초 20% 피해를 주는 화상효과. 다른 과장전 스킬과 중첩 불가능<br><br>쿨다운 22초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/bowpassive2.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Greater Accuracy
+                                </h3>
+                                <p>조준 안해도 명중률에 패널티 없음</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability1_mod2.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Initial Engagement
+                                </h3>
+                                <p>Power Shot 스킬 명중 시 5초간 10% 피해 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive5.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Empowering Headshot
+                                </h3>
+                                <p>헤드샷 적중 시 5초간 10% 피해 증가</p>
+                            </span>
+                        </div>
+
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability5_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Backdraft
+                                </h3>
+                                <p>화상효과를 입은 적 상대로 일반 공격이 12% 증가된 피해를 입힘</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive1.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Ballistic Advantage
+                                </h3>
+                                <p>탄알이 50m 이상 날아가도 데미지가 줄지 않음</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive3.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    First Blood
+                                </h3>
+                                <p>최대 체력의 적에게 10% 증가된 피해</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw2-3" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/musketability2.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Shooter's Stance
+                                </h3>
+                                <p>사격자세를 취해 이동 불가 상태가 되며 재장전 시간이 75% 감소한다. 3번의 사격 후 일어선다<br><br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability2_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Chronic Trauma
+                                </h3>
+                                <p>Powder Burn 스킬이 헤드샷을 맞추면 화상효과가 13초로 늘어난다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability2_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Bullseye
+                                </h3>
+                                <p>Power Shot의 헤드샷이 쿨다운을 15% 감소시킨다</p>
+                            </span>
+                        </div>
+                        
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability2_mod3.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Called Shot Resupply
+                                </h3>
+                                <p>일반 공격으로 헤드샷을 맞추면 전체 스킬 쿨다운 10% 감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability2_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Shoot More
+                                </h3>
+                                <p>사격자세로 발사하는 탄환 5발로 증가</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive1.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Hit Your Mark
+                                </h3>
+                                <p>타겟이 멀수록 헤드샷과 치명타 피해가 증가. 100m에서 최대 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive2.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Heightened Precision
+                                </h3>
+                                <p>조준 시 명중할 때마다 2.5% 피해 증가. 조준을 풀거나 사격간격이 5초를 넘기면 효과가 사라짐 (최대 6 스택)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability3_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Marksman
+                                </h3>
+                                <p>연속된 3발이 같은 대상을 맞추면 다른 스킬 쿨다운 25% 감소</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/musketpassive4.webp" onclick="
+                            SelDesel12(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Sniper
+                                </h3>
+                                <p>3배율을 달아 마우스휠로 줌 할 수 있음. 헤드샷 데미지 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p>  
+                        <p id="hr15"></p>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>

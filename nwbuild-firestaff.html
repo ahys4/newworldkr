@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        <meta charset="utf-8">
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-firestaff.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+             <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+               
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                <div class="hiddenstorage">
+                    <p id="Row11">0</p>
+                    <p id="Row12">0</p>
+                    <p id="Row13">0</p>
+                    <p id="Row14">0</p>
+                    <p id="Row15">0</p>
+                    <p id="Row16">0</p>
+                    <p id="Row21">0</p>
+                    <p id="Row22">0</p>
+                    <p id="Row23">0</p>
+                    <p id="Row24">0</p>
+                    <p id="Row25">0</p>
+                    <p id="Row26">0</p>
+                </div>
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>FIRE MAGE - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s1" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/firestaffability2.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Pillar of Fire
+                                </h3>
+                                <p>타겟형 불기둥.<br>무기공격력의 134% 피해를 준다
+                                    <br>마나 10 소모
+                                    <br>쿨다운 10초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability3_mod1.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                Spell Focus
+                                </h3>
+                                <p>강공격 적중 시 최대 마나의 5% 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability1_mod1.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fiery Restoration
+                                </h3>
+                                <p>강공격 적중 시 스펠 쿨다운 10% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <!--2nd line-->
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/icemagic_ability1_mod2.webp" onclick="
+                            selec(modskill1(this), this); 
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    First Strike
+                                </h3>
+                                <p>불기둥이 최대 생명력 적에게 40% 피해를 더 가함</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw1-2" name="s2" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/firestaffability3.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Meteor Shower
+                                </h3>
+                                <p>(채널링) 대상 지역에 유성비를 내린다. 첫 적중 시 무기공격력의 34% 피해를 주고 범위 내에 남아 있는 대상에게 초당 20% 피해를 입힘<br>초당 5 마나 소모 (총 30 마나 소모)<br>쿨다운 18초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvsgrit.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Clear Mind
+                                </h3>
+                                <p>마나가 반이상 차있으면 피해 10% 증가</p>
+                            </span>
+                        </div>
+                        
+                        <!--3rd line-->
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability1_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Arson's Advantage
+                                </h3>
+                                <p>불기둥에 적중된 적 하나당 마나의 10% 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability3_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Immolation
+                                </h3>
+                                <p>유성비를 처음 적중시킬 때마다 최대 마나의 1% 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordpassive5.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Singe
+                                </h3>
+                                <p>치명타가 적을 불태워 6초간 초당 무기공격력의 3% 의 화상 피해를 입힘</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s3" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/firestaffability1.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fireball
+                                </h3>
+                                <p>화염구를 발사해 적중 시 무기공격력의 140% 피해를 주고 6초동안 3m 범위의 땅을 불태우며 초당 10%의 화상 피해를 입힘<br>마나 25 소모<br>쿨다운 15초</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordpassive3.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Spellslinger
+                                </h3>
+                                <p>화염 스펠의 치명타 확률이 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s2" class="image-container" style="border-color: white; border-width: 1px;" src="./assets/swordability7.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fiery Determination
+                                </h3>
+                                <p>채널링 하는 동안 슈퍼아머 (방해 면역 효과)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container" style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass1_perfectionist.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Clear Casting
+                                </h3>
+                                <p>지난 3초간 피해를 입지 않았다면 피해 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability1_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                   Scorched Earth
+                                </h3>
+                                <p>땅이 불타는 시간이 9초로 늘어남</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonushvydmgconsec.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Prophet of a Fire God
+                                </h3>
+                                <p>치명타 피해 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive11.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Flare
+                                </h3>
+                                <p>강공격이 마나를 소모하지 않음</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability1_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Judgement of Helios
+                                </h3>
+                                <p>첫 타격 이후 모든 유성 타격이 25%의 피해를 줌</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Catch
+                                </h3>
+                                <p>화염구로 적중 시 최대 마나 10% 회복하고 스펠 쿨다운 7% 감소</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability6_gravitywell.webp" onclick="
+                            SelDesel6(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Runes of Helios
+                                </h3>
+                                <p>화염 스펠을 사용하면 땅에 2m 반경의 고대문양을 소환. 문양 위에 있으면 스펠 피해 30% 증가. 문양은 7초간 지속됨<br>쿨다운 30초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p> 
+                    <p id="hr13"></p> 
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>PYROMANCER - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability3_mod2.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Pyromania
+                                </h3>
+                                <p>체력이 반 이하면 피해 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/firestaffability4.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Flamethrower
+                                </h3>
+                                <p>지팡이 끝에서 화염을 방사해 초당 무기공격력의 34% 피해를 줌.<br>적중 시 적을 6초간 불태우며 초당 3% 화상 피해를 입힘.<br>초당 마나 4 소모<br>쿨다운 8초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/firestaffability6.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Incinerate
+                                </h3>
+                                <p>주위에 폭발을 일으켜 무기공격력의 130% 피해를 주고<br>휩쓸린 적을 3m 밀쳐내며 불을 붙여 6초간 초당 3% 피해를 줌<br>마나 22 소모<br>쿨다운 12초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive9.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Heat Up
+                                </h3>
+                                <p>근접 공격을 막아낼 시<br>최대 마나의 5% 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability4_mod2.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fire's Reach
+                                </h3>
+                                <p>화염방사의 사거리 50% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability6_mod1.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Let it Burn
+                                </h3>
+                                <p>화상 피해를 입힐 때마다 2초간 10% 피해감소 버프를 얻음</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability6_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Scorched
+                                </h3>
+                                <p>폭발에 적중된 적 하나당 화상 스택을 추가로 부여</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability5_mod2.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Kindle
+                                </h3>
+                                <p>화상 지속시간 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability4_mod1.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Infernal Flames
+                                </h3>
+                                <p>화염방사의 기본 피해 25% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw2-3" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/firestaffability5.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Burn Out
+                                </h3>
+                                <p>전방으로 돌진해 적을 관통하며 적중 시 무기공격력의 129% 피해를 입히고 화상을 입혀 8초간 초당 10% 피해를 줌<br>마나 30 소모<br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvslowhp.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Cauterize Wounds
+                                </h3>
+                                <p>폭발로 입힌 피해량의 20%를 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability3_mod2.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Pyro Dancer
+                                </h3>
+                                <p>화염방사 쿨다운 제거</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_skewer.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Watch it Burn
+                                </h3>
+                                <p>약공격이 화상을 입히며 6초간 무기공격력의 3% 피해를 줌</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability5_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    All In
+                                </h3>
+                                <p>질주에 적중된 적 하나당 화염 스펠 쿨다운 5% 감소</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability6_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Flame Out!
+                                </h3>
+                                <p>폭발이 두 번 적중함</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability6pass1_crowdedwell.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Trial by Fire
+                                </h3>
+                                <p>피해를 입을 시 화염으로 몸을 감싸 10초간 4m 반경의 적에게 무기공격력의 5% 피해를 줌<br>쿨다운 120초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass4_artofbattle.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Combat Speed
+                                </h3>
+                                <p>화염 스펠 사용 시<br> 5초간 이동속도 10% 증가<br>쿨다운 10초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability5_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Heat it Up!
+                                </h3>
+                                <p>질주의 이동거리 50% 증가</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability4_mod2.webp" onclick="
+                            SelDesel12(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Reheat
+                                </h3>
+                                <p>지난 6초간 화염 스펠을 사용하지 않았으면 마나 재생 400% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p> 
+                        <p id="hr15"></p> 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>

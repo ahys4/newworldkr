@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        
+        <meta charset="utf-8">
+        <link rel = "shorcut icon" href='./NWicon.ico'>
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-warhammer.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+            <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+                
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>JUGGERNAUT - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s2" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/warhammerability1.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Armor Breaker
+                                </h3>
+                                <p>해머를 휘둘러 상대의 방어를 35% 관통하고 140% 무기데미지를 준다<br><br>쿨다운 12초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive11.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Epitome of Bonk!
+                                </h3>
+                                <p>기본 공격에 방어 관통 10% 부여</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability2_mod1.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Hammer Time
+                                </h3>
+                                <p>강공격 시 4초간 피해 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+
+                        <!--2nd line-->
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability1_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Indomitable
+                                </h3>
+                                <p>이 기술에 제어방해 면역 효과 부여</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability1_mod1.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Exhaustive Attacks
+                                </h3>
+                                <p>모든 기술이 탈진을 유발해 5초간 상대의 스태미나 재생력을 15% 감소시킨다 (중첩 불가)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-2" name="s1" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/warhammerability3.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Mighty Gavel
+                                </h3>
+                                <p>도약하며 해머를 내려찍어 160% 무기데미지를 준다<br><br>쿨다운 22초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability2_mod1.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Hardened Steel
+                                </h3>
+                                <p>강공격에 제어방해 면역 효과를 부여하고 강공격 중 20% 피해감소</p>
+                            </span>
+                        </div>
+                        
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_perforate_bonusrend.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Lasting Trauma
+                                </h3>
+                                <p>이 기술에 적중된 타겟의 피해흡수 -15% (10초 지속)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordability1_mod3.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Summary Judgement
+                                </h3>
+                                <p>체력 30% 미만의 적에게 20% 증가된 피해를 준다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordpassive14.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Contemption
+                                </h3>
+                                <p>체력 30% 미만의 적에게 강공격의 피해량 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s3" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/warhammerability6.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Wrecking Ball
+                                </h3>
+                                <p>해머로 지면을 내려쳐 적을 넘어뜨리고 120% 무기데미지를 준다<br><br>쿨다운 15초</p>
+                            </span>
+                        </div>
+
+                        <!--4th line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2_mod4.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Quick Recovery
+                                </h3>
+                                <p>강공격 적중 시 쿨다운 7% 감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability1_mod1.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Impact Fracture
+                                </h3>
+                                <p>스태미나 피해량 25% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability6_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Safety Measures
+                                </h3>
+                                <p>적중 시 20% 피해감소 효과를 얻음 (4초 지속)</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability3_mod2.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Opening Act
+                                </h3>
+                                <p>최대 생명력의 적에게 이 기술의 피해량 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability3_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Expedite
+                                </h3>
+                                <p>이 기술 적중 시 3초간 이동속도 30% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability6_mod2.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Power Through Pain
+                                </h3>
+                                <p>피해를 받으면 1초동안 가하는 피해량 35% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability3_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Breathing Room
+                                </h3>
+                                <p>적중한 적 주위 1.5m 반경의 적들도 넘어뜨림</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" name="s1" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/warhammerability3_mod4.webp" onclick="
+                            selec(modskill4(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Justice For All
+                                </h3>
+                                <p>이 기술 시전 중 약공격을 하면 두번째 공격이 나가며 200% 무기데미지를 준다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p> 
+                    <p id="hr6-1"></p>
+                    <p id="hr6-2"></p> 
+                    <p id="hr13"></p> 
+                    <p id="hr4-1"></p>
+                    <p id="hr13-1"></p> 
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>CROWD CRUSHER - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Outnumbered
+                                </h3>
+                                <p>3m 반경에 적이 두명 이상 있으면 피해감소 10%</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Clear Out
+                                </h3>
+                                <p>해머를 크게 휘둘러 적들을 4m 밀쳐내며 115% 무기데미지를 입힌다<br><br>쿨다운 15초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_vaultkick_empoweronblockbreak.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    I Can Do This All Day
+                                </h3>
+                                <p>근접 공격을 방어할 시 스태미나 소모 30% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/warhammerability5.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Shockwave
+                                </h3>
+                                <p>해머를 내려찍어 3m 반경에 땅을 뒤흔드며 80% 무기데미지를 준다. 영향 받은 적은 2초간 기절한다<br><br>도발 보석 호환. 적중 시 6초간 도발한다<br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Power Cleaner
+                                </h3>
+                                <p>이 기술 적중 시 주위 6m 반경의 아군에게 10% 피해감소 (4초 지속)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass4_artofbattle.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Guarded Sprint
+                                </h3>
+                                <p>달리는 줄 피해감소 10%</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2_mod4.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Acceleration
+                                </h3>
+                                <p>약공격으로 디버프 걸린 적 적중 시 모든 기술 쿨다운 7% 감소</p>
+                            </span>
+                        </div>
+                    
+                        <!--3rd line-->
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability5_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Frailty
+                                </h3>
+                                <p>이 기술 적중 시 약화 부여 대상의 공격력을 10% 감소시킨다. (10초 지속)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability3_mod3.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Facilitated Expedition
+                                </h3>
+                                <p>디버프에 걸린 적 적중 시 3초간 이동속도 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2_mod3.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Concussive Impact
+                                </h3>
+                                <p>워해머 디버프에 걸린 대상에게 피해량 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-3" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/warhammerability4.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Path of Destiny
+                                </h3>
+                                <p>땅을 내려찍어 직선으로 에너지 파동을 보내 적중된 적들에 110% 무기데미지를 준다<br><br>쿨다운 22초</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability5_mod2.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Meteoric Crater
+                                </h3>
+                                <p>이 기술의 범위 4m 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2_mod4.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Clean and Refreshed
+                                </h3>
+                                <p>이 기술에 적중된 적 하나당 이 기술의 쿨다운 5% 감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordpassive10.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Prevailing Spirit
+                                </h3>
+                                <p>이 스킬 트리에 있는 스킬 사용 시 주는 피해의 35%를 회복한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability4_mod2.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Seismic Waves
+                                </h3>
+                                <p>파동에 적중된 적들을 움추리게 한다</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container" style="border-color: white; border-width: 1px;" src="./assets/swordpassive11.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Resurgence
+                                </h3>
+                                <p>2번의 약공격 후 자신에게 걸린 디버프 지속시간 25% 감소 (5초에 한번 발동)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability3_mod3.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Swing Away
+                                </h3>
+                                <p>이 기술 적중 시 3초간 이동속도 30% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability2_mod4.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Stimulated Reduction
+                                </h3>
+                                <p>파동에 적중된 적 하나당 이 기술의 쿨다운 5% 감소</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/warhammerability4_mod2.webp" onclick="
+                            SelDesel12(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Aftershock
+                                </h3>
+                                <p>대상이 제어방해 효과를 받으면 이동속도가 20% 감소한다 (4초 지속)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p>  
+                        <p id="hr15"></p>  
+                        <p id="hr15-1"></p>
+                        <p id="hr12-1"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>

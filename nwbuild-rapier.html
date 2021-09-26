@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        
+        <meta charset="utf-8">
+        <link rel = "shorcut icon" href='./NWicon.ico'>
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-rapier.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+            <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+                
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                <div class="hiddenstorage">
+                    <p id="Row11">0</p>
+                    <p id="Row12">0</p>
+                    <p id="Row13">0</p>
+                    <p id="Row14">0</p>
+                    <p id="Row15">0</p>
+                    <p id="Row16">0</p>
+                    <p id="Row21">0</p>
+                    <p id="Row22">0</p>
+                    <p id="Row23">0</p>
+                    <p id="Row24">0</p>
+                    <p id="Row25">0</p>
+                    <p id="Row26">0</p>
+                </div>
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>BLOOD - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s2" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/rapier_ability1_slash.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Tondo
+                                </h3>
+                                <p>부채꼴 모양으로 휩쓸어 5m 전방의 적을에 무기공격력의 50% 피해를 입히고 출혈을 일으킨다. 출혈은 12초간 85% 피해를 주고 중첩될 시 지속시간을 초기화 한다 (최대 3 중첩)<br><br>쿨다운 11초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass2_heavybleeds.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Refreshing Strikes
+                                </h3>
+                                <p>적중 시 쿨다운 1% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass1_perfectionist.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Engarde
+                                </h3>
+                                <p>체력 50% 이상의 적에게 10% 피해 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s3" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/rapier_ability2_flurry.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Flurry
+                                </h3>
+                                <p>스탠스를 취해 점점 강해지는 5번의 찌르기 공격을 한다. 회피로 스킬 캔슬 가능<br><br>쿨다운 16초
+                                </p>
+                            </span>
+                        </div>
+
+                        <!--2nd line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass4_bleeddamage.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Unerring
+                                </h3>
+                                <p>출혈 대상에게 5% 피해 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-2" name="s1" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability3_flourish.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Flourish and Finish
+                                </h3>
+                                <p>Flourish: 부채꼴 모양으로 휘둘러 적을 밀쳐낸다.<br>Finish: Flourish 끝에 약공격을 하면 마무리 공격이 나간다. Finish는 전방으로 짧게 찌르기 공격을 하며 모든 출혈 중첩을 터뜨리고 남아있는 출혈 피해의 110% 피해를 준다.<br><br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability2mod2_all_in.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Overwhelm
+                                </h3>
+                                <p>각각의 찌르기 공격이 가드에 피해를 25% 더 준다</p>
+                            </span>
+                        </div>
+                        
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability1mod1_pressure.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Thirst For Blood
+                                </h3>
+                                <p>출혈을 처음 일으킨 적 하나당 쿨다운 10% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability3mod1_grit.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    With Flair
+                                </h3>
+                                <p>Flourish와 Finish에 제어방해 면역 효과</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass5_doubleslash.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Light Edge
+                                </h3>
+                                <p>약공격 콤보의 중단 휩쓸기 공격에 8% 피해 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability2mod1_hastyflurry.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fleeting Strikes
+                                </h3>
+                                <p>찌르기가 적중할 때마다 이 스킬의 쿨다운 7% 감소</p>
+                            </span>
+                        </div>
+
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability1mod2_compoundattack.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    And Again
+                                </h3>
+                                <p>적 하나만 적중했을 시 가드에 막히더라도 쿨다운 25% 감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass1_lightbleeds.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Heavy Puncture
+                                </h3>
+                                <p>강공격이 출혈중인 적을 적중했을 시 출혈 지속시간 2초 연장. 중첩을 추가해서 지속시간을 초기화 하더라도 추가로 2초가 연장된다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability3mod2_stamina.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Swagger
+                                </h3>
+                                <p>Finish 적중 시 스태미나 20 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability2mod3_continuedweakness.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    To The Bone
+                                </h3>
+                                <p>찌르기 공격이 각각 출혈 지속시간을 1초씩 연장. 지속시간을 초기화 시키더라도 연장 효과가 붙는다</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass2_controlledbreathing.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Proper Spacing
+                                </h3>
+                                <p>적에게서 4m 이상 떨어진 경우 이 기술의 직접 타격 피해량 100% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass2_heavybleeds.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fuel
+                                </h3>
+                                <p>출혈 지속 피해를 입을 때마다 이 기술의 쿨다운 3.5% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass4_artofbattle.webp" onclick="
+                            selec(modskill4(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Finalize
+                                </h3>
+                                <p>각각의 찌르기 공격이 적을 움추리게 만듬</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" name="s1" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability3mod3_deadlyfinish.webp" onclick="
+                            selec(modskill4(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Bloody End
+                                </h3>
+                                <p>Finish가 남아있는 출혈 피해의 150%를 입힌다 (110%에서 150%로 증가)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p> 
+                    <p id="hr6-1"></p>
+                    <p id="hr6-2"></p> 
+                    <p id="hr13"></p> 
+                    <p id="hr4-1"></p>
+                    <p id="hr13-1"></p> 
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>GRACE - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass5_dodgein.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Desperation
+                                </h3>
+                                <p>자신의 스태미나가 40% 미만일 때 피해량 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability6_evade.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Evade
+                                </h3>
+                                <p>원하는 방향으로 사이드 스탭을 밟아 현재 모션을 캔슬한다. (짧은 무적 판정) 스탭 중 약공격 시 빠르게 찌르기 모션을 시전한다<br><br>쿨다운 6초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass2_controlledbreathing.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Controlled Breathing
+                                </h3>
+                                <p>적중 시 스태미나 3 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability4_riposte.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Riposte
+                                </h3>
+                                <p>1초간 반격 자세를 취한다. (반격 중 무적) 피격당하는 순간 공격해 적들을 1.5초 기절시킨다.<br><br>도발 보석 호환. 5m 반경 내의 적을 4초간 도발한다<br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability6mod1_breath.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Breathe In
+                                </h3>
+                                <p>스태미나 20 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass1_perfectionist.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Perfectionist
+                                </h3>
+                                <p>체력이 최대치일때 피해량 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability5_aeriallunge.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fleche
+                                </h3>
+                                <p>전방으로 10m 돌진해 적들을 꿰뚫으며 무기공격력의 145% 피해를 준다<br><br>쿨다운 17초</p>
+                            </span>
+                        </div>
+
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability4mod1_insult_to_injury.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Insult To Injury
+                                </h3>
+                                <p>반격에 성공하면 3초간 제어방해 효과에 면역</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass2_heavybleeds.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Red Curtains
+                                </h3>
+                                <p>치명타 적중 시 모든 쿨다운 5% 감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability6mod2_minortempo.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Allegro
+                                </h3>
+                                <p>이 기술 시전 후 3초간 이동속도 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability5mod1_renewedvigor.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Quick Lunge
+                                </h3>
+                                <p>이 기술로 적을 처치하면 이 기술의 쿨다운 80% 감소</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability4mod2_priority.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Priority
+                                </h3>
+                                <p>반격으로 기절시키면 다른 기술들 쿨다운 20% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability6mod3_majortempo.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Adagio
+                                </h3>
+                                <p>앞으로 사이드 스탭을 밟고 다음 약공격을 적중할 시 15% 증가된 피해를 준다 (1초 지속)</p>
+                            </span>
+                        </div>
+                        
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass4_artofbattle.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Swiftness
+                                </h3>
+                                <p>공격 적중 시 4초간 이동속도 3% 증가 (최대 5스택)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_bloodmasterpass5_doubleslash.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Backside
+                                </h3>
+                                <p>이 기술 시전 후 다음 치명타 공격의 피해량이 15% 증가 (5초 지속)</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerpassive2.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Lasting Consequence
+                                </h3>
+                                <p>반격 기절 시간이 2초로 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability6mod4_bursttempo.webp" onclick="
+                            selec(modskill4(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Crescendo
+                                </h3>
+                                <p>약공격이 적중할 때마다 이 기술의 쿨다운 30% 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_ability5mod2_wake.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Interruption
+                                </h3>
+                                <p>이 기술 시전 중 약공격을 하면 돌진을 캔슬하고 피해를 준다. (무기 공격력의 115% 피해)</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass3_momentum.webp" onclick="
+                            SelDesel12(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Momentum
+                                </h3>
+                                <p>기술 시전 후 다음 약공격이나 강공격이 25% 증가된 피해를 입힘. (3초 지속)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p>  
+                        <p id="hr15"></p>  
+                        <p id="hr15-1"></p>
+                        <p id="hr12-1"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>

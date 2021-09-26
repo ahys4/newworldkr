@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        
+        <meta charset="utf-8">
+        <link rel = "shorcut icon" href='./NWicon.ico'>
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-greataxe.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+            <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+                
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                <div class="hiddenstorage">
+                    <p id="Row11">0</p>
+                    <p id="Row12">0</p>
+                    <p id="Row13">0</p>
+                    <p id="Row14">0</p>
+                    <p id="Row15">0</p>
+                    <p id="Row16">0</p>
+                    <p id="Row21">0</p>
+                    <p id="Row22">0</p>
+                    <p id="Row23">0</p>
+                    <p id="Row24">0</p>
+                    <p id="Row25">0</p>
+                    <p id="Row26">0</p>
+                </div>
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>REAPER - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s1" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability4_judgementsreach.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Reap
+                                </h3>
+                                <p>도끼로 걸어 5m 전방의 적들을 끌어당기고 무기공격력의 110% 피해를 입힌다<br>도발 보석 호환 (적중 시 4초 도발)<br>쿨다운 18초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_mauraderpass1_empoweredswing.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Greed
+                                </h3>
+                                <p>약공격이 5초동안 피해를 5% 상승시킨다 (최대 3 스택)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperpass5_pursuit.webp" onclick="
+                            SelDesel(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Executioner's Speed
+                                </h3>
+                                <p>약공격으로 2명 이상 적중 시 이동속도 20% 증가</p>
+                            </span>
+                        </div>
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw1-2" name="s2" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability2_engage.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Charge
+                                </h3>
+                                <p>10m를 돌진해 적에게 도달하면 무기공격력의 120% 피해를 입힌다. 마우스 왼쪽 클릭으로 돌진 거리 조절 가능.<br><br>돌진 중 제어효과 면역 상태가 된다. 쿨다운 18초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperpass1_heavypull.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Critical Gains
+                                </h3>
+                                <p>치명타 적중 시 피해량의 10% 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability4pass1_thecollector.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    The Collector
+                                </h3>
+                                <p>기술의 사거리가 8m로 늘어난다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive11.webp" onclick="
+                            SelDesel2(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Death's Embrace
+                                </h3>
+                                <p>체력 50% 미만의 적의 방어를 10% 관통한다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability5_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Frenzied Momentum
+                                </h3>
+                                <p>돌진 거리에 비례해 무기공격력의 120 - 140%로 피해가 증가한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_mauraderpass2_resistantgrit.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Frustration
+                                </h3>
+                                <p>공격이 막히면 10초간 피해가 15% 증가한다 (최대 1 스택)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s3" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability3_executioner.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Execute
+                                </h3>
+                                <p>머리 위로 도끼를 휘둘러 무기공격력의 200% 피해를 입힌다. 체력 50% 미만의 적에게는 피해량이 300%로 증가<br><br>쿨다운 25초</p>
+                            </span>
+                        </div>
+
+                        <!--4th line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_mauraderpass5_unendingslice.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Keen Edge
+                                </h3>
+                                <p>치명타 피해량이 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability1pass2_unendingwinds.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Hunger
+                                </h3>
+                                <p>이 기술이 적중하면 피해량의 30%를 회복한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_mauraderpass4_painlesswounds.webp" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Critical Condition
+                                </h3>
+                                <p>체력 30% 미만의 적에게 치명타 확률 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetpassive4.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Unstoppable Greed
+                                </h3>
+                                <p>이 기술을 사용할 때 움추려들지 않으며 제어방해에 면역이 된다</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability2pass2_chargedswing.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Unpredictable Strike
+                                </h3>
+                                <p>오른쪽 클릭으로 돌진을 캔슬하며 도끼를 휘둘러 무기공격력의 140 - 165% 피해를 입힌다 (돌진 거리 비례 피해)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive3.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Feed
+                                </h3>
+                                <p>체력 30% 미만의 적에게 입히는 피해량의 10% 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability4pass2_fatalattraction.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Fatal Attraction
+                                </h3>
+                                <p>끌어당긴 후 회전공격을 해서 무기공격력의 115% 피해를 입힌다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability3pass2_deathbringer.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Executioner
+                                </h3>
+                                <p>이 기술로 체력 30% 미만의 적 적중 시 치명타 확률 100%</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/greataxe_marauderultimate_maraudersfury.webp" onclick="
+                            SelDesel6(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Bloodlust
+                                </h3>
+                                <p>15m 전방에 적이 있으면 이동속도 30% 증가, 피해 15% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p>  
+                    <p id="hr13"></p> 
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>SHARPSHOOTER - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvslowhp.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Mauler's Resolve
+                                </h3>
+                                <p>체력이 50% 미만일 때 피격당하면 스태미나 40 회복<br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability5_maelstrom.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Maelstrom
+                                </h3>
+                                <p>빠른 회전 공격을 해서 근접한 적들을 끌어당기고 무기공격력의 110% 피해를 입힌다<br><br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperpass1_heavypull.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Heavy Pull
+                                </h3>
+                                <p>강공격이 적을 끌어당긴다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability1_whirlwind.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Whirlwind
+                                </h3>
+                                <p>회전 공격으로 주위 적들에게 무기공격력의 50% 피해를 준다. 적중 시 재시전된다. (최대 4번) 회전 중 이동 가능. 백스탭 불가<br><br>쿨다운 30초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability5pass1_deadlyseas.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Storm's Reach
+                                </h3>
+                                <p>이 기술이 끌어당기는 사거리가 50% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_mauraderpass3_hardenedheavy.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Enduring Strike
+                                </h3>
+                                <p>강공격에 제어방해 면역 효과를 부여하고 효과를 받는 동안 피해감소 20%</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability1pass1_strengtheningwinds.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Gusting Winds
+                                </h3>
+                                <p>최대 회전 수가 7로 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperpass2_enduringpull.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Gravity
+                                </h3>
+                                <p>이 기술로 끌어당긴 적을 30% 오래 붙잡아둠</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability5pass2_stormsreach.png" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Absorb
+                                </h3>
+                                <p>이 기술 시전 중 모든 투사체를 흡수한다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw2-3" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability6_gravitywell.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Gravity Well
+                                </h3>
+                                <p>도끼를 던져 3초간 회오리를 일으키며 중앙으로 적을 끌어당긴다. 3초 후 터지며 무기공격력의 125% 피해를 입힌다<br><br>쿨다운 30초</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability1pass3_gustingwinds.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Unending Winds
+                                </h3>
+                                <p>이 기술의 이동속도가 50% 증가한다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability5pass3_noreprieve.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    No Reprieve
+                                </h3>
+                                <p>한번 더 회전하며 적을 끌어당기고 무기공격력의 110% 피해를 입힌다</p>
+                            </span>
+                        </div>
+                        
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperpass3_weakenedrestraint.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Revenge
+                                </h3>
+                                <p>도끼로 방어 시 5초간 피해 5% 증가 (최대 3 스택)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability6pass1_crowdedwell.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Crowded Well
+                                </h3>
+                                <p>끌어당긴 적 한명당 피해량 10% 증가</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability1pass2_unendingwinds.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Surrounded
+                                </h3>
+                                <p>3명 이상 적중 시 피해량 30% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvsgrit.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Center of Attention
+                                </h3>
+                                <p>4m 반경에 적이 3명 이상 있으면 피해 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperpass4_crowdedprotection.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Crowded Protection
+                                </h3>
+                                <p>4m 반경에 적이 3명 이상 있으면 피해감소 10%</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/greataxe_ability5pass2_refreshingwell.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Unyielding
+                                </h3>
+                                <p>회오리 안에 있는 아군에게 피해감소 10%</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp" onclick="
+                            SelDesel12(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Mauler's Fury
+                                </h3>
+                                <p>공격 적중 시 3초간 피해 3% 증가 (최대 10 스택)</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p>  
+                        <p id="hr15"></p>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>

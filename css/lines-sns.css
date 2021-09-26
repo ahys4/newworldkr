@@ -1,0 +1,153 @@
+#hr1 {
+    position: relative;
+    top:-561px;
+    left: 241px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:57px;
+    height:1px
+}
+#hr2 {
+    position: relative;
+    top:-417px;
+    left: 181px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:177px;
+    height:1px
+}
+#hr13 {
+    visibility: hidden;
+    position: relative;
+    top:-335px;
+    left: 236px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:67px;
+    height:1px
+}
+#hr3 {
+    position: relative;
+    top:-485px;
+    left: 37px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:57px;
+    height:1px
+}
+#hr4 {
+    position: relative;
+    top:-340px;
+    left: -23px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:177px;
+    height:1px
+}
+#hr5 {
+    position: relative;
+    top:-407px;
+    left: 445px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:57px;
+    height:1px
+}
+#hr6 {
+    position: relative;
+    top:-318px;
+    left: 441px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:67px;
+    height:1px
+}
+#hr7 {
+    position: relative;
+    top:-517px;
+    left: 170px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:167px;
+    height:1px
+}
+#hr8 {
+    position: relative;
+    top:-300px;
+    left: 63px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:177px;
+    height:1px
+}
+#hr9 {
+    position: relative;
+    top:-461px;
+    left: -182px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:57px;
+    height:1px
+}
+#hr10 {
+    position: relative;
+    top:-300px;
+    left: -344px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:177px;
+    height:1px
+}
+#hr11 {
+    position: relative;
+    top:-351px;
+    left: 22px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:57px;
+    height:1px
+}
+#hr12 {
+    position: relative;
+    top:-288px;
+    left: 425px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:67px;
+    height:1px
+}
+#hr14 {
+    visibility: hidden;
+    position: relative;
+    top:-399px;
+    left: -84px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:67px;
+    height:1px
+}
+#hr15 {
+    visibility: hidden;
+    position: relative;
+    top:-399px;
+    left: 17px;
+    transform:rotate(90deg);
+    z-index: 3;
+    border-top:1px solid white;
+    width:67px;
+    height:1px
+}

@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>뉴월드 빌드 시뮬레이터</title>
+        
+        <meta charset="utf-8">
+        <link rel = "shorcut icon" href='./NWicon.ico'>
+        <link rel='stylesheet' type='text/css' href='./css/style.css'>
+        <link rel='stylesheet' type='text/css' href='./css/lines-lifestaff.css'>
+        <link rel='stylesheet' type='text/css' href='./css/block-query.css'>
+        <link rel='stylesheet' type='text/css' href='./css/tooltips2.css'>
+        <link rel='stylesheet' type='text/css' href='./css/images.css'>
+        <script src="./js/scripts.js"></script>
+    </head>
+
+    <body id=배경>
+        <!--네비게이션바-->
+        <nav>
+            <h1><img class="icon"style="border-color: white; border-width: 1px;" src="./assets/greataxe_reaperultimate_defiantstature.webp"><span id="head">뉴월드 빌드 시뮬레이터</span></h1>
+        </nav>
+        <nav class="buttons">
+            <span><a href="./nwbuild-sns.html"><input type="button" id="button" value="소드&실드"></a></span>
+            <span><a href="./nwbuild-hatchet.html"><input type="button" id="button" value="해챗"></a></span>
+            <span><a href="./nwbuild-rapier.html"><input type="button" id="button" value="레이피어"></a></span>
+            <span><a href="./nwbuild-spear.html"><input type="button" id="button" value="스피어"></a></span>
+            <span><a href="./nwbuild-greataxe.html"><input type="button" id="button" value="그레이트액스"></a></span>
+            <span><a href="./nwbuild-warhammer.html"><input type="button" id="button" value="워해머"></a></span>
+            <span><a href="./nwbuild-bow.html"><input type="button" id="button" value="보우"></a></span>
+            <span><a href="./nwbuild-musket.html"><input type="button" id="button" value="머스킷"></a></span>
+            <span><a href="./nwbuild-firestaff.html"><input type="button" id="button" value="파이어스태프"></a></span>
+            <span><a href="./nwbuild-lifestaff.html"><input type="button" id="button" value="라이프스태프"></a></span>
+            <span><a href="./nwbuild-icegauntlet.html"><input type="button" id="button" value="아이스건틀릿"></a></span>
+        </nav>
+        <!--두 스킬트리-->
+        <div class="two-trees">
+            <!--<div>
+                <h2 class="points">스킬 포인트
+                <p><a id="points">19</a></p></h2>
+                
+                <input type="button" class="buttons" id="button2" value="reset" onclick="
+                ResetAtt(this);
+                ">
+                <div class="hiddenstorage">
+                    <p id="Row11">0</p>
+                    <p id="Row12">0</p>
+                    <p id="Row13">0</p>
+                    <p id="Row14">0</p>
+                    <p id="Row15">0</p>
+                    <p id="Row16">0</p>
+                    <p id="Row21">0</p>
+                    <p id="Row22">0</p>
+                    <p id="Row23">0</p>
+                    <p id="Row24">0</p>
+                    <p id="Row25">0</p>
+                    <p id="Row26">0</p>
+                </div>
+            </div>-->
+            <div class="two-trees2">
+                <!--스킬트리1-->
+                <div class="tree1">
+                    <h2><a id="points">19</a>HEALING - <a id="invested">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="tooltip-a">
+                            <img id="rw1-1" name="s2" class="image-container-active" style="border-color: white; border-width: 1px;" src="./assets/lifestaffability3.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Divine Embrace
+                                </h3>
+                                <p>타겟을 무기공격력의 150%만큼 회복한다<br><br>마나 25 소모<br>쿨다운 6초
+                                </p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-1" name="s7" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability6_mod2.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Absolved
+                                </h3>
+                                <p>약공격과 강공격이 마나를 소모하지 않음</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+
+                        <!--2nd line-->
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability3_mod1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Privilege
+                                </h3>
+                                <p>마나 소모가 20으로 감소</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-a">
+                            <img id="rw1-2" name="s1" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability2.png" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Sacred Ground
+                                </h3>
+                                <p>15초 지속되는 지역을 지정해 그 안에 있는 아군의 체력을 매초 무기공격력의 20%씩 회복한다<br><br>마나 15 소모<br>쿨다운 20초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s7" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive11.webp" onclick="
+                            selec(modskillex(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Mending Touch
+                                </h3>
+                                <p>강공격이 아군을 통과할 때 디버프를 하나 제거한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-2" name="s7" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerpassive8.webp" onclick="
+                            selec(modskillex2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Blissful Touch
+                                </h3>
+                                <p>약공격이 아군을 통과할때 아군의 체력을 무기공격력의 20% 회복한다</p>
+                            </span>
+                        </div>
+                        
+                        <!--3rd line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive3.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Desperate Speed
+                                </h3>
+                                <p>체력 50% 미만의 아군을 회복하면 모든 스킬 쿨다운이 10초 감소한다 (5초에 한번 발동)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability6.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Holy Ground
+                                </h3>
+                                <p>지역 안에 있으면 스태미나와 마나 재생이 100% 빨라진다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive2.webp" onclick="
+                            SelDesel3(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Revitalize
+                                </h3>
+                                <p>약공격이 쿨다운을 5% 감소시킨다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw1-3" name="s3" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive5.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Splash Of Light
+                                </h3>
+                                <p>100m 반경에 자신을 포함한 아군을 무기공격력의 50%만큼 회복<br><br>마나 15 소모<br>쿨다운 15초</p>
+                            </span>
+                        </div>
+
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetpassive5.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Shared Struggle
+                                </h3>
+                                <p>타겟의 체력이 50% 미만이면 반경 8m 내의 아군 한명을 추가로 치유한다</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability6_mod1.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Blessed
+                                </h3>
+                                <p>지역 안의 아군의 치유효과 50% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive6.png" onclick="
+                            SelDesel4(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Enchanted Justice
+                                </h3>
+                                <p>전투 중 피격당하면 주위 4m 반경에 5초간 매초 무기공격력의 10%씩 회복한다 (쿨다운 120초)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-4" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability1.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Shared Recovery
+                                </h3>
+                                <p>체력 50% 미만인 대상을 치유할 시 최대 마나의 3% 회복</p>
+                            </span>
+                        </div>
+
+                        
+                        <!--5th line-->
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability3_mod2.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Rebound
+                                </h3>
+                                <p>추가로 회복된 대상의 체력이 50% 미만이면 8m 반경의 또 다른 아군을 치유한다</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive1.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Sacred Protection
+                                </h3>
+                                <p>모든 파티원의 치유량 5% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw1-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordpassive10.webp" onclick="
+                            SelDesel5(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Intensify
+                                </h3>
+                                <p>강공격 적중 시 10초간 치유량을 10% 증가 (최대 3 스택)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw1-5" name="s3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/rapier_evasionpass1_perfectionist.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Purify
+                                </h3>
+                                <p>디버프 하나 제거</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw1-6" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/swordability1_mod3.webp" onclick="
+                            SelDesel6(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Divine Blessing
+                                </h3>
+                                <p>체력 50% 미만의 아군을 회복하면 치유량 30% 증가</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                    </div>
+                    <p id="hr1"></p> 
+                    <p id="hr2"></p> 
+                    <p id="hr3"></p> 
+                    <p id="hr4"></p> 
+                    <p id="hr5"></p> 
+                    <p id="hr6"></p>  
+                    <p id="hr13"></p> 
+                    <p id="hr16"></p> 
+                    <p id="hr17"></p>
+                    <p id="hr18"></p>  
+                </div>
+                
+                <!--스킬트리2-->
+                <div class="tree2">
+                    <h2><a id="points">19</a>PROTECTOR - <a id="invested2">0</a></h2>
+                    <div id="grid">
+                        <!--1st line-->
+                        <div class="tooltip-a">
+                            <img id="rw2-1" name="s5" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/firestaffability1.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Orb of Protection
+                                </h3>
+                                <p>빛 투사체를 날려 20초간 10% 피해감소 효과와 무기공격력의 10% 치유. 적에게 적중시 146% 피해<br><br>마나 16 소모<br>쿨다운 10초</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/bowpassive5.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Bend Light
+                                </h3>
+                                <p>회피 후 5초간 치유량 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-1" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability3_mod2.webp" onclick="
+                            SelDesel7(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Defensive Light
+                                </h3>
+                                <p>근접 공격을 방어하면 최대 마나의 5% 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        
+                        <!--2nd line-->
+                        <div class="tooltip">
+                            <img id="rw2-2" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability1_mod2.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Protector's Blessing
+                                </h3>
+                                <p>투사체가 아군을 적중하면 10초간 초당 무기공격력의 7.5%씩 회복</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-2" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerpassive5.webp" onclick="
+                            SelDesel8(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Protector's Touch
+                                </h3>
+                                <p>약공격과 강공격이 3초간 15% 피해감소</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-2" name="s6" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/hatchetpassive3.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Beacon
+                                </h3>
+                                <p>빛 투사체를 날려 무기공격력의 146% 피해를 주고 대상에 붙어 주위 아군의 체력을 매초 20%씩 회복 (10초 지속)<br><br>마나 16 소모<br>쿨다운 35초</p>
+                            </span>
+                        </div>
+
+                        <!--3rd line-->
+                        
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive8.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Shared Protection
+                                </h3>
+                                <p>투사체로 아군을 적중하면 자신도 버프를 얻음</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-3" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/swordpassive13.webp" onclick="
+                            SelDesel9(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Protector's Strength
+                                </h3>
+                                <p>버프를 받고 있는 상태면 치유량 10% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip-a">
+                            <img id="rw2-3" name="s4" class="image-container-active"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability4_mod3.webp" onclick="
+                            selec(actskill(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Light's Embrace
+                                </h3>
+                                <p>대상을 무기공격력의 100%만큼 치유. 버프 하나당 회복량 +30% 증가<br><br>마나 18 소모<br>쿨다운 4초</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-3" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffability6_mod2.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Infused Light
+                                </h3>
+                                <p>효과 반경이 50% 늘어남</p>
+                            </span>
+                        </div>
+                        
+                        <!--4th line-->
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/firestaffability3_mod2.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Aegis
+                                </h3>
+                                <p>투사체가 적중 시 3m 반경내 아군 모두에게 효과를 줌</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_cyclone_bonusstaminaonmultihit.webp" onclick="
+                            selec(modskill1(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Inspire
+                                </h3>
+                                <p>이 스킬로 대상을 치유하면 스태미나 25 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketpassive8.webp" onclick="
+                            SelDesel10(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Balance
+                                </h3>
+                                <p>자신의 체력이 50% 미만일 때 공격을 받으면 5초간 이동속도 10% 증가 (쿨다운 20초)</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-4" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/spear_bonusdmgvslowhp.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Radiance's Blessing
+                                </h3>
+                                <p>투사체가 5초 더 지속한다</p>
+                            </span>
+                        </div>
+                        
+                        <!--5th line-->
+                        <div class="spacer"></div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/lifestaffpassive7.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Spirits United
+                                </h3>
+                                <p>자신과 파티원의 마나 재생력 3% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s4" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/warhammerability5.webp" onclick="
+                            selec(modskill2(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Connection
+                                </h3>
+                                <p>이 기술로 대상을 치유하면 대상에게 걸린 버프 하나당 최대 마나의 1% 회복</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/musketability3_mod2.webp" onclick="
+                            SelDesel11(this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Glowing Focus
+                                </h3>
+                                <p>내가 준 버프의 지속시간 20% 증가</p>
+                            </span>
+                        </div>
+                        <div class="tooltip">
+                            <img id="rw2-5" name="s6" class="image-container"style="border-color: white; border-width: 1px;" src="./assets/hatchetability4_mod1.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Speed of Light
+                                </h3>
+                                <p>이 기술로 대상을 회복하면 3초간 이동속도 20% 증가 버프도 부여</p>
+                            </span>
+                        </div>
+                        
+                        <!--6th line-->
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <div class="tooltip-u">
+                            <img id="rw2-6" name="s4" class="image-container-ulti"style="border-color: white; border-width: 1px;" src="./assets/spear_perforate_bonusblockpushback.webp" onclick="
+                            selec(modskill3(this), this);
+                            " role="button">
+                            <span class="tooltiptext">
+                                <h3>
+                                    Magnify
+                                </h3>
+                                <p>이 기술로 치유 시 내가 준 버프 지속시간 2초 연장</p>
+                            </span>
+                        </div>
+                        <div class="spacer"></div>
+                        <div class="spacer"></div>
+                        <p id="hr7"></p> 
+                        <p id="hr8"></p> 
+                        <p id="hr9"></p> 
+                        <p id="hr10"></p> 
+                        <p id="hr11"></p> 
+                        <p id="hr12"></p>  
+                        <p id="hr14"></p>  
+                        <p id="hr15"></p>
+                        <p id="hr19"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+    </body>
+    <footer>
+        <div class="hiddenstorage">
+            <p id="Row11">0</p>
+            <p id="Row12">0</p>
+            <p id="Row13">0</p>
+            <p id="Row14">0</p>
+            <p id="Row15">0</p>
+            <p id="Row16">0</p>
+            <p id="Row21">0</p>
+            <p id="Row22">0</p>
+            <p id="Row23">0</p>
+            <p id="Row24">0</p>
+            <p id="Row25">0</p>
+            <p id="Row26">0</p>
+        </div>
+      </footer>
