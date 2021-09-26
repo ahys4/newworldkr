@@ -483,7 +483,7 @@ function modskillex2(x1){
 //스킬 포인트 투자 function. 스킬 활성화/비활성화
 function SelDesel(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (self.style.borderColor === 'white') {    //스킬 투자 안됐을 시
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -542,9 +542,11 @@ function SelDesel(self){
 
 function SelDesel2(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow11 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
+        alert("a");
+        document.getElementsByClassName("alert1").visibility = "visible";
+
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -593,9 +595,8 @@ function SelDesel2(self){
 }
 function SelDesel3(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow12 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -640,9 +641,8 @@ function SelDesel3(self){
 }
 function SelDesel4(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow13 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -684,9 +684,8 @@ function SelDesel4(self){
 }
 function SelDesel5(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow14 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -727,11 +726,10 @@ function SelDesel5(self){
 }
 function SelDesel6(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow15 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (objectRow11+objectRow12+objectRow13+objectRow14+objectRow15 < 10) {
-        tempAlert("스킬트리에 최소 10포인트 투자 필요",2000);
+        alert("스킬트리에 최소 10포인트 투자해야 함");
     } else if (objectRow16 === 0){
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -761,7 +759,7 @@ function SelDesel6(self){
 //  스킬 트리 2
 function SelDesel7(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (self.style.borderColor === 'white') {    //스킬 투자 안됐을 시
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -810,9 +808,8 @@ function SelDesel7(self){
 
 function SelDesel8(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow21 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -858,9 +855,8 @@ function SelDesel8(self){
 }
 function SelDesel9(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow22 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -904,9 +900,8 @@ function SelDesel9(self){
 }
 function SelDesel10(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow23 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -948,9 +943,8 @@ function SelDesel10(self){
 }
 function SelDesel11(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow24 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (self.style.borderColor === 'white') {
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -990,11 +984,10 @@ function SelDesel11(self){
 }
 function SelDesel12(self){
     if (self.style.borderColor === 'white' && PointsAvail === 0) {
-        tempAlert("스킬포인트 부족",2000);
+        alert("스킬포인트 부족");
     } else if (objectRow25 === 0){
-        tempAlert("윗줄에 스킬 투자 필요",2000);
     } else if (objectRow21+objectRow22+objectRow23+objectRow24+objectRow25 < 10) {
-        tempAlert("스킬트리에 최소 10포인트 투자 필요",2000);
+        alert("스킬트리에 최소 10포인트 투자해야 함");
     } else if (objectRow26 === 0){
         self.style.borderColor='#F9D970';
         self.style.borderWidth='3px';
@@ -1075,13 +1068,8 @@ function ResetAtt(imageformats){
     document.getElementById("invested").innerHTML = inv1;
     document.getElementById("invested2").innerHTML = inv2;
 }
-function tempAlert(msg,duration)
-{
- var el = document.createElement("div");
- el.setAttribute("style","width:220px;position:absolute;top:40px;left:20px;color: rgb(196, 57, 57);background-color:black;border-radius: 6px;font:bold 15px;padding:10px;");
- el.innerHTML = msg;
- setTimeout(function(){
-  el.parentNode.removeChild(el);
- },duration);
- document.body.appendChild(el);
+
+
+function alertfn(){
+    document.getElementsByClassName("alert1").style.visibility = "hidden";
 }
