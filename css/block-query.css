@@ -1,8 +1,4 @@
-@media(max-width:535px){
-    .buttons{
-        display:none;
-    }
-}
+
 @media(max-width:1300px){
     .two-trees2{
         display: block;
