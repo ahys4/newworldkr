@@ -1078,7 +1078,7 @@ function ResetAtt(imageformats){
 function tempAlert(msg,duration)
 {
  var el = document.createElement("div");
- el.setAttribute("style","width:220px;position:fixed;top:180px; left:30px;color: rgb(196, 57, 57);background-color:black;border-radius: 6px;font:bold 15px;padding:10px;");
+ el.setAttribute("style","width:220px;position:fixed;top:80px; left:30px;color: rgb(196, 57, 57);background-color:black;border-radius: 6px;font:bold 15px;padding:10px;");
  el.innerHTML = msg;
  setTimeout(function(){
   el.parentNode.removeChild(el);
